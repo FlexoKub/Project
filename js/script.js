@@ -1,13 +1,21 @@
 'use strict';
 
-let money = '200 руб';
-let income = true;
-let addExpenses = 'JavaScript';
-let deposit = '№ 256332';
-let mission = 25;
-let period = '27.01.2021';
+let money = 50000;
+let income = 'Фриланс';
+let addExpenses = 'Телефон, Интернет, Развлечения, Такси';
+let deposit = true;
+let mission = 1000000;
+let period = 5;
 
-alert(addExpenses);
-console.log('addExpenses: ', addExpenses);
-console.log(typeof(mission));
+let arr = addExpenses.toLowerCase().split(', ');
+
+console.log(typeof(money));
 console.log(typeof(income));
+console.log(typeof(deposit));
+console.log(addExpenses.length);
+console.log('Период равен ' + period + ' месяцев. \nЦель заработать ' + mission + ' рублей.');
+console.log(arr);
+
+let budgetDay;
+budgetDay = money/30;
+console.log('budgetDay: ', budgetDay);
