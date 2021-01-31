@@ -10,3 +10,4 @@ let period = '27.01.2021';
 alert(addExpenses);
 console.log('addExpenses: ', addExpenses);
 console.log(typeof(mission));
+console.log(typeof(income));
