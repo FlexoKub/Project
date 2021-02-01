@@ -1,6 +1,8 @@
 'use strict';
 
-let money = Number(prompt('Ваш месячный доход?'));
+let money;
+do {money = prompt('Ваш месячный доход?');}
+    while (money <= 0 || !Number(money));
 let income = 'Фриланс';
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 // Телефон, Машина, Развлечения
@@ -18,10 +20,18 @@ console.log('Период равен ' + period + ' месяцев.');
 console.log('Цель заработать ' + mission + ' рублей.');
 console.log(addExpenses);
 console.log(arr);
-let expenses1 = prompt('Введите обязательную статью расходов?');
-let amount1 = +prompt('Во сколько это обойдется?');
-let expenses2 = prompt('Введите обязательную статью расходов?');
-let amount2 = +prompt('Во сколько это обойдется?');
+let expenses1 = prompt('Введите обязательную статью расходов 1?');
+
+let amount1;
+do {amount1 = +prompt('Во сколько это обойдется?');}
+    while (amount1 <= 0 || !Number(amount1));
+
+let expenses2 = prompt('Введите обязательную статью расходов 2?');
+
+let amount2;
+do {amount2 = +prompt('Во сколько это обойдется?');}
+    while (amount2 <= 0 || !Number(amount2));
+
 let budgetMonth = money-(amount1 + amount2);
 console.log('Бюджет на месяц: ', budgetMonth);
 let mounthMission = Math.ceil(mission/budgetMonth);
