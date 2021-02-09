@@ -11,7 +11,7 @@ return String(n);
 let money;
 
 function start() {
-    do {money = prompt('Ваш месячный доход?');}
+    do {money = prompt('Ваш месячный доход?', 50000);}
     while (!isNumber(money));
 }
 start();
@@ -40,7 +40,7 @@ let appData = {
         }
         
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-        appData.addExpenses =  addExpenses.toLowerCase().split(', ');
+        appData.addExpenses =  addExpenses.toLowerCase().split(',');
         
         // for (let word of appData.addExpenses) {
         //     word = word.charAt(0).toUpperCase() + word.substr(1);
@@ -109,13 +109,42 @@ else {console.log('Цель будет достигнута за ' + appData.get
 console.log('Возможные расходы: ' + appData.addExpenses);
 console.log(appData.getStatusIncome());
 
-for (let key in appData) {
-    console.log('Наша программа включает в себя данные: ' + key + ': ' + appData[key]);
-}
+// for (let key in appData) {
+//     console.log('Наша программа включает в себя данные: ' + key + ': ' + appData[key]);
+// }
 
 //вывести строкой в консоль каждое слово с большой буквы слова разделены запятой и пробелом
 const arr = [];
 appData.addExpenses.forEach(function (item) {
-    arr.push(item.charAt(0).toUpperCase() + item.substr(1));
+    item.trim();
+    // arr.push(item.charAt(0).toUpperCase() + item.substr(1));
+    arr.push(item.toLowerCase().trim().slice(0, 1).toUpperCase() + item.slice(1));
 });
 console.log(arr.join(', '));
+
+const startBtn = document.getElementById('start'),
+    btnPlusIncomeAdd = document.getElementsByTagName('button')[0],
+    btnPlusExpensesAdd = document.getElementsByTagName('button')[1],
+    depositCheck = document.querySelector('#deposit-check'),
+    additionalIncomeItem = document.querySelectorAll('.additional_income-item'),
+    budgetMonthValue = document.getElementsByClassName('.budget_month-value'),
+    budgetDayValue = document.getElementsByClassName('.budget_day-value'),
+    expensesMonthValue = document.getElementsByClassName('.expenses_month-value'),
+    additionalIncomeValue = document.getElementsByClassName('.additional_income-value'),
+    additionalExpensesValue = document.getElementsByClassName('.additional_expenses-value'),
+    incomePeriodValue = document.getElementsByClassName('.income_period-value'),
+    targetMonthValue = document.getElementsByClassName('.target_month-value'),
+    salaryAmount = document.querySelector('.salary-amount'),
+    incomeTitle = document.querySelector('.income-title'),
+    incomeAmount = document.querySelector('.income-amount'),
+    additionalIncomeItem1 = document.querySelectorAll('.additional_income-item')[0],
+    additionalIncomeItem2 = document.querySelectorAll('.additional_income-item')[1],
+    expensesTitle = document.querySelector('.expenses-title'),
+    expensesAmount = document.querySelector('.expenses-amount'),
+    additionalExpensesItem = document.querySelector('.additional_expenses-item'),
+    depositAmount = document.querySelector('.deposit-amount'),
+    depositPercent = document.querySelector('.deposit-percent'),
+    targetAmount = document.querySelector('.target-amount'),
+    periodSelect = document.querySelector('.period-select');
+
+    console.log('incomeTitle: ', incomeTitle);
