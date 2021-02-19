@@ -57,7 +57,7 @@ const AppData = function () {
 };
 
 AppData.prototype.check = function () {
-    if(salaryAmount.value === '') {
+    if(salaryAmount.value !== '') {
         startBtn.removeAttribute('disabled');
     }
 }; 
@@ -260,30 +260,45 @@ AppData.prototype.reset = function() {
 };
 
 AppData.prototype.EventListener = function() {
-const _this = this;
+    const _this = this;
+    startBtn.addEventListener('click', function(event){
+        if(salaryAmount.value === ''){
+            event.preventDefault();
+            alert('Ошибка, поле "Месячный доход" должно быть заполненно!');
+        }
+        else {_this.start();}
+    //блокировать поля ввода
+        for (let i = 0; i < input.length; i++) {
+                input[i].readOnly = "readonly";}
     
-    startBtn.addEventListener('click', appData.start.bind(appData));
-    btnPlusExpensesAdd.addEventListener('click', appData.addExpensesBlock);
-    btnPlusIncomeAdd.addEventListener('click', appData.addIncomeBlock);
-    salaryAmount.addEventListener('keyup', appData.check);
-    cancelBtn.addEventListener('click', appData.reset.bind(appData));
+    startBtn.style.display = 'none';
+    cancelBtn.style.display = 'block';
+        return;
+    });
+    
+    startBtn.addEventListener('click', _this.start.bind(_this));
+    btnPlusExpensesAdd.addEventListener('click', _this.addExpensesBlock);
+    btnPlusIncomeAdd.addEventListener('click', _this.addIncomeBlock);
+    salaryAmount.addEventListener('keyup', _this.check);
+    cancelBtn.addEventListener('click', _this.reset.bind(_this));
     
     //полунок
     periodSelect.addEventListener('input', function(){
         periodAmount.innerHTML = this.value;
     });
-    
-    let addExp = [];
-    for(let i=0; i< appData.addExpenses.length; i++) {
-        let element = appData.addExpenses[i].trim();
-        element = element.charAt(0).toUpperCase() + element.substring(1).toLowerCase();
-        addExp.push(element);
-    }
 };
+
+// AppData.prototype.addExp = function() {
+//     const _this = this;
+//     let addExp = [];
+//     for(let i=0; i< _this.addExpenses.length; i++) {
+//         let element = _this.addExpenses[i].trim();
+//         element = element.charAt(0).toUpperCase() + element.substring(1).toLowerCase();
+//         addExp.push(element);
+//     }
+// };
 
 const appData = new AppData();
 console.log('appData: ', appData);
 
-
 AppData.prototype.EventListener();
-
