@@ -273,3 +273,19 @@ console.log('appData: ', appData);
 
 AppData.prototype.EventListener();
 
+// periodSelect.addEventListener('change', () => {
+            //     this.getPeriod();
+            //     incomePeriodValue.value = this.calcPeriod();
+            // });
+
+
+            // let input = document.querySelectorAll('[placeholder="Сумма"]');
+            // console.log('input: ', input);
+            
+            // input.forEach(function (item) {
+            //     if (item.value !== "" && !(appData.isNumber(item.value))){
+            //         alert('Введите корректное значение в поле');
+            //         item.value = '';
+            //         return;
+            //     }
+            // });
